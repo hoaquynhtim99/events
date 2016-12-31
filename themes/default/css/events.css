@@ -40,6 +40,9 @@
 .event-calendar .current-month{
 	background: #f16236;
 }
+.event-calendar .today{
+	background: #5cb85c;
+}
 .event-calendar .has-event, .event-calendar .has-event a{
 	font-weight: 700;
 	color: #EEEE00;
