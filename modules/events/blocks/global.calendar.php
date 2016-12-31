@@ -95,14 +95,15 @@ if (!nv_function_exists('nv_events_calendar')) {
 
         $array = array();
         foreach ($list as $row) {
-            $array[date('j', $load_event_calendar)][$row['id']] = $row['title'];
+            $array[date('j', $row['time_start'])][$row['id']] = $row['title'];
         }
 
         for ($i = $time_start_calendar, $j = 1; $i <= $time_end_calendar; $i += 86400) {
             $day = array(
                 'title' => date('d', $i),
                 'month_class' => date('n', $i) == $current_month ? 'current-month' : '',
-                'has_event' => empty($array[date('j', $i)]) ? '' : 'has-event'
+                'has_event' => empty($array[date('j', $i)]) ? '' : 'has-event',
+                'today' => date('d-m-Y', $i) == $today ? 'today' : ''
             );
 
             if (!empty($day['has_event'])) {

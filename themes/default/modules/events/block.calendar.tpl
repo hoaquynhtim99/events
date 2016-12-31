@@ -27,7 +27,7 @@
 			</tr>
 			<!-- BEGIN: week -->
 			<tr>
-				<!-- BEGIN: loop --><td class="{DAY.month_class} {DAY.has_event}">{DAY.title}</td><!-- END: loop -->
+				<!-- BEGIN: loop --><td class="{DAY.month_class} {DAY.today} {DAY.has_event}">{DAY.title}</td><!-- END: loop -->
 			</tr>
 			<!-- END: week -->
 		</tbody>
