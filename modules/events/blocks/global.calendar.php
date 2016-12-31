@@ -102,7 +102,8 @@ if (!nv_function_exists('nv_events_calendar')) {
             $day = array(
                 'title' => date('d', $i),
                 'month_class' => date('n', $i) == $current_month ? 'current-month' : '',
-                'has_event' => empty($array[date('j', $i)]) ? '' : 'has-event'
+                'has_event' => empty($array[date('j', $i)]) ? '' : 'has-event',
+                'today' => date('d-m-Y', $i) == $today ? 'today' : ''
             );
 
             if (!empty($day['has_event'])) {
