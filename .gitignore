@@ -54,3 +54,5 @@
 !/themes/admin_default/js/events.js
 !/themes/admin_default/images/events
 !/themes/admin_default/modules/events
+/error.php
+/.github
