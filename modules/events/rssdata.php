@@ -8,10 +8,11 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_IS_MOD_RSS'))
+if (!defined('NV_IS_MOD_RSS')) {
     die('Stop!!!');
+}
 
-$rssarray = array();
+$rssarray = [];
 
 $sql = "SELECT catid, title, alias FROM " . NV_PREFIXLANG . "_" . $mod_data . "_cat ORDER BY weight ASC";
 //$rssarray[] = array( 'catid' => 0, 'parentid' => 0, 'title' => '', 'link' => '');

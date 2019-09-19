@@ -8,8 +8,9 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_IS_FILE_ADMIN'))
+if (!defined('NV_IS_FILE_ADMIN')) {
     die('Stop!!!');
+}
 
 $page_title = $lang_module['cat'];
 
@@ -108,7 +109,7 @@ if ($nv_Request->isset_request('delete', 'post')) {
     include NV_ROOTDIR . '/includes/footer.php';
 }
 
-$data = array();
+$data = [];
 $error = '';
 
 $catid = $nv_Request->get_int('catid', 'post,get', 0);
@@ -124,12 +125,12 @@ if (!empty($catid)) {
 
     $caption = $lang_module['cat_edit'];
 } else {
-    $data = array(
+    $data = [
         'catid' => 0,
         'title' => '',
         'alias' => '',
         'description' => '',
-    );
+    ];
 
     $caption = $lang_module['cat_add'];
 }
@@ -208,7 +209,10 @@ foreach ($array as $row) {
     $row['url_edit'] = NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=cat&amp;catid=' . $row['catid'] . "#addedit";
 
     for ($i = 1; $i <= $num; ++$i) {
-        $xtpl->assign('WEIGHT', array('w' => $i, 'selected' => ($i == $row['weight']) ? ' selected="selected"' : ''));
+        $xtpl->assign('WEIGHT', [
+            'w' => $i,
+            'selected' => ($i == $row['weight']) ? ' selected="selected"' : ''
+        ]);
 
         $xtpl->parse('main.loop.weight');
     }

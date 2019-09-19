@@ -8,19 +8,20 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MOD_EVENTS'))
+if (!defined('NV_MOD_EVENTS')) {
     die('Stop!!!');
+}
 
 /**
  * nv_main_theme()
- * 
+ *
  * @param mixed $array
  * @param mixed $generate_page
  * @param string $title
  * @param array $search
  * @return
  */
-function nv_main_theme($array, $generate_page, $title = '', $search = array())
+function nv_main_theme($array, $generate_page, $title = '', $search = [])
 {
     global $module_file, $lang_module, $module_info, $module_upload;
 
@@ -103,7 +104,7 @@ function nv_main_theme($array, $generate_page, $title = '', $search = array())
 
 /**
  * nv_detail_theme()
- * 
+ *
  * @param mixed $row
  * @return
  */
@@ -152,7 +153,7 @@ function nv_detail_theme($row)
 
 /**
  * nv_info_theme()
- * 
+ *
  * @param mixed $message
  * @param mixed $link
  * @param string $type

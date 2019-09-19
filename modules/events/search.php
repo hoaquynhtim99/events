@@ -8,8 +8,9 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_IS_MOD_SEARCH'))
+if (!defined('NV_IS_MOD_SEARCH')) {
     die('Stop!!!');
+}
 
 $db->sqlreset()->select('COUNT(*)')->from(NV_PREFIXLANG . '_' . $m_values['module_data'] . '_rows')->where('(' . nv_like_logic('title', $dbkeywordhtml, $logic) . ' OR ' . nv_like_logic('hometext', $dbkeywordhtml, $logic) . ') AND status = 1');
 
@@ -23,10 +24,10 @@ if ($num_items) {
     while (list($id, $tilterow, $alias, $hometext) = $result->fetch(3)) {
         $url = $link . $alias . $global_config['rewrite_exturl'];
 
-        $result_array[] = array(
+        $result_array[] = [
             'link' => $url,
             'title' => BoldKeywordInStr($tilterow, $key, $logic),
             'content' => BoldKeywordInStr($hometext, $key, $logic)
-        );
+        ];
     }
 }

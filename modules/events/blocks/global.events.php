@@ -8,13 +8,14 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MAINFILE'))
+if (!defined('NV_MAINFILE')) {
     die('Stop!!!');
+}
 
 if (!nv_function_exists('nv_new_events')) {
     /**
      * nv_new_events()
-     * 
+     *
      * @param mixed $block_config
      * @param mixed $mod_data
      * @return
@@ -28,7 +29,7 @@ if (!nv_function_exists('nv_new_events')) {
 
         $this_day = mktime(0, 0, 0, date('n'), date('j'), date('Y'));
 
-        $array_block_news = array();
+        $array_block_news = [];
         $db->sqlreset()->select('time_start, time_end, title, alias')->from(NV_PREFIXLANG . '_' . $mod_data . '_rows')->order('time_start ASC')->where('status = 1 AND time_start >=' . $this_day)->limit(7);
 
         $events = $db->query($db->sql())->fetchAll();
@@ -59,13 +60,13 @@ if (!nv_function_exists('nv_new_events')) {
                 $time .= ' - ' . ($h != '00' ? $h . ':' . $m . ' ' : '') . $d;
             }
 
-            $array_block_news[] = array(
+            $array_block_news[] = [
                 'title' => $title,
                 'link' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=' . $alias . $global_config['rewrite_exturl'],
                 'pubDateY' => nv_date('Y', $time_start),
                 'pubDateM' => nv_date('d/m', $time_start),
                 'data_other_1' => $time
-            );
+            ];
         }
 
         if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $mod_file . '/block.new_event.tpl')) {
@@ -78,7 +79,7 @@ if (!nv_function_exists('nv_new_events')) {
 
         $xtpl = new XTemplate('block.new_event.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/modules/' . $mod_file);
         $xtpl->assign('LANG', $lang_global);
-        
+
         if ($module != $module_name) {
             if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/css/' . $mod_file . '.css')) {
                 $block_css = $global_config['module_theme'];
@@ -89,7 +90,7 @@ if (!nv_function_exists('nv_new_events')) {
             }
             $xtpl->assign('BLOCK_CSS', $block_css);
             $xtpl->parse('main.css');
-            
+
             if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/js/' . $mod_file . '.js')) {
                 $block_js = $global_config['module_theme'];
             } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/js/' . $mod_file . '.js')) {

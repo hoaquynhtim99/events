@@ -8,11 +8,12 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_IS_FILE_MODULES'))
+if (!defined('NV_IS_FILE_MODULES')) {
     die('Stop!!!');
+}
 
-$sql_drop_module = array();
-$array_table = array('cat', 'rows');
+$sql_drop_module = [];
+$array_table = ['cat', 'rows'];
 $table = $db_config['prefix'] . '_' . $lang . '_' . $module_data;
 $result = $db->query('SHOW TABLE STATUS LIKE ' . $db->quote($table . '_%'));
 while ($item = $result->fetch()) {

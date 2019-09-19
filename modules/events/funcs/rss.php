@@ -8,11 +8,12 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MOD_EVENTS'))
+if (!defined('NV_MOD_EVENTS')) {
     die('Stop!!!');
+}
 
-$channel = array();
-$items = array();
+$channel = [];
+$items = [];
 
 $channel['title'] = $module_info['custom_title'];
 $channel['link'] = NV_MY_DOMAIN . NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name;
@@ -58,13 +59,13 @@ if ($module_info['rss']) {
             $time .= ' - ' . ($h != '00' ? $h . ':' . $m . ' ' : '') . $d;
         }
 
-        $items[] = array(
+        $items[] = [
             'title' => $title,
             'link' => NV_MY_DOMAIN . NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $alias . $global_config['rewrite_exturl'], //
             'guid' => $module_name . '_' . $id,
             'description' => $time . (!empty($location) ? '. ' . $location : ''),
             'pubdate' => $publtime
-        );
+        ];
     }
 }
 

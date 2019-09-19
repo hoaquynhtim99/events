@@ -8,25 +8,32 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_SYSTEM'))
+if (!defined('NV_SYSTEM')) {
     die('Stop!!!');
+}
 
 define('NV_MOD_EVENTS', true);
 
 $catid = 0;
-$global_array_cat = array();
-$global_array_cat_alias = array();
-$array_mod_title = array();
+$global_array_cat = [];
+$global_array_cat_alias = [];
+$array_mod_title = [];
 
 require NV_ROOTDIR . '/modules/' . $module_file . '/global.functions.php';
 
 // Xac dinh RSS
 if ($module_info['rss']) {
-    $rss[] = array('title' => $module_info['custom_title'], 'src' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $module_info['alias']['rss']);
+    $rss[] = [
+        'title' => $module_info['custom_title'],
+        'src' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $module_info['alias']['rss']
+    ];
 }
 
 foreach ($global_array_cat as $cat) {
-    $rss[] = array('title' => $cat['title'], 'src' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $cat['alias']);
+    $rss[] = [
+        'title' => $cat['title'],
+        'src' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $cat['alias']
+    ];
     $global_array_cat_alias[$cat['alias']] = $cat['catid'];
 }
 

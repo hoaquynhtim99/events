@@ -8,10 +8,11 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_ADMIN') or !defined('NV_MAINFILE'))
+if (!defined('NV_ADMIN') or !defined('NV_MAINFILE')) {
     die('Stop!!!');
+}
 
-$module_version = array(
+$module_version = [
     'name' => 'NukeViet Events',
     'modfuncs' => 'main,viewcat,rss,detail,search',
     'is_sysmod' => 0,
@@ -20,9 +21,9 @@ $module_version = array(
     'date' => 'Sun, 12 Jun 2016 05:02:54 GMT',
     'author' => 'PHAN TAN DUNG (phantandung92@gmail.com)',
     'note' => '',
-    'uploads_dir' => array(
+    'uploads_dir' => [
         $module_upload,
         $module_upload . '/files',
         $module_upload . '/images'
-    )
-);
+    ]
+];

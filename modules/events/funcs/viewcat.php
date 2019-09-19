@@ -8,8 +8,9 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MOD_EVENTS'))
+if (!defined('NV_MOD_EVENTS')) {
     die('Stop!!!');
+}
 
 $page_title = $global_array_cat[$catid]['title'];
 $key_words = $module_info['keywords'];
@@ -33,17 +34,20 @@ $num_items = $db->query($db->sql())->fetchColumn();
 $db->select('id, catids, time_start, title, alias, location, images')->order('time_start DESC')->limit($per_page)->offset(($page - 1) * $per_page);
 
 $result = $db->query($db->sql());
-$array = array();
+$array = [];
 
 while ($row = $result->fetch()) {
     $row['link'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $row['alias'] . $global_config['rewrite_exturl'];
-    $row['cat'] = array();
+    $row['cat'] = [];
 
     $catids = array_filter(explode(',', $row['catids']));
 
     foreach ($catids as $_catid) {
         if (isset($global_array_cat[$_catid])) {
-            $row['cat'][] = array('title' => $global_array_cat[$_catid]['title'], 'link' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_array_cat[$_catid]['alias']);
+            $row['cat'][] = [
+                'title' => $global_array_cat[$_catid]['title'],
+                'link' => NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_array_cat[$_catid]['alias']
+            ];
         }
     }
 

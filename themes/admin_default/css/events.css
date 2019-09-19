@@ -1,20 +1,25 @@
-﻿.ui-datepicker{
+﻿.ui-datepicker {
     z-index: 9999999!important;
 }
-.fa-required{
+
+.fa-required {
     display: block;
 }
-.fa-required em{
+
+.fa-required em {
     font-size: 75%;
 }
-.event-content-cat-area{
+
+.event-content-cat-area {
     max-height: 200px;
     overflow: auto;
 }
-.event-content-cat-item{
+
+.event-content-cat-item {
     height: 30px;
     overflow: hidden;
 }
-.text-strong{
+
+.text-strong {
     font-weight: 700;
 }

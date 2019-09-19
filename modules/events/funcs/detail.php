@@ -8,8 +8,9 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MOD_EVENTS'))
+if (!defined('NV_MOD_EVENTS')) {
     die('Stop!!!');
+}
 
 $sql = 'SELECT * FROM ' . NV_PREFIXLANG . '_' . $module_data . '_rows WHERE status = 1 AND alias = :alias';
 $sth = $db->prepare($sql);

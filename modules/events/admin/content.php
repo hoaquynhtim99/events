@@ -8,8 +8,9 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_IS_FILE_ADMIN'))
+if (!defined('NV_IS_FILE_ADMIN')) {
     die('Stop!!!');
+}
 
 $id = $nv_Request->get_int('id', 'post,get', 0);
 $error = '';
@@ -29,10 +30,10 @@ if (!empty($id)) {
 
     $page_title = $lang_module['edit'];
 } else {
-    $array = array(
+    $array = [
         'id' => 0,
         'post_id' => $admin_info['userid'],
-        'catids' => array(),
+        'catids' => [],
         'time_start' => 0,
         'time_end    ' => 0,
         'location' => '',
@@ -41,7 +42,7 @@ if (!empty($id)) {
         'images' => '',
         'hometext' => '',
         'bodytext' => '',
-    );
+    ];
 
     $page_title = $lang_module['add'];
 }
@@ -49,7 +50,7 @@ if (!empty($id)) {
 $accept = $nv_Request->get_int('accept', 'post', 0);
 
 if ($nv_Request->isset_request('submit', 'post')) {
-    $array['catids'] = $nv_Request->get_typed_array('catids', 'post', 'int', array());
+    $array['catids'] = $nv_Request->get_typed_array('catids', 'post', 'int', []);
 
     $array['time_start_h'] = $nv_Request->get_int('time_start_h', 'post', 0);
     $array['time_start_m'] = $nv_Request->get_int('time_start_m', 'post', 0);
@@ -111,14 +112,14 @@ if ($nv_Request->isset_request('submit', 'post')) {
             $error = $lang_module['content_error_alias'];
         } else {
             if (!$array['id']) {
-                $sql = 'INSERT INTO ' . NV_PREFIXLANG . '_' . $module_data . '_rows (post_id, catids, time_start, time_end, location, title, alias, images, hometext, 
+                $sql = 'INSERT INTO ' . NV_PREFIXLANG . '_' . $module_data . '_rows (post_id, catids, time_start, time_end, location, title, alias, images, hometext,
                 bodytext, addtime, edittime, status ) VALUES (
                     ' . $admin_info['userid'] . ', :catids, :time_start, :time_end, :location, :title, :alias, :images, :hometext, :bodytext,
                     ' . NV_CURRENTTIME . ', ' . NV_CURRENTTIME . ', 1
                 )';
             } else {
-                $sql = 'UPDATE ' . NV_PREFIXLANG . '_' . $module_data . '_rows SET 
-                    catids = :catids, time_start = :time_start, time_end = :time_end, location = :location, title = :title, alias = :alias, images = :images, hometext = :hometext, 
+                $sql = 'UPDATE ' . NV_PREFIXLANG . '_' . $module_data . '_rows SET
+                    catids = :catids, time_start = :time_start, time_end = :time_end, location = :location, title = :title, alias = :alias, images = :images, hometext = :hometext,
                     bodytext = :bodytext, edittime = ' . NV_CURRENTTIME . ' WHERE id = ' . $array['id'];
             }
 
@@ -203,12 +204,12 @@ foreach ($global_array_cat as $cat) {
 }
 
 for ($i = 0; $i <= 23; $i++) {
-    $hour = array(
+    $hour = [
         'key' => $i,
         'title' => str_pad($i, 2, '0', STR_PAD_LEFT),
         'selected_start' => $i == $array['time_start_h'] ? ' selected="selected"' : '',
         'selected_end' => $i == $array['time_end_h'] ? ' selected="selected"' : '',
-    );
+    ];
 
     $xtpl->assign('HOUR', $hour);
     $xtpl->parse('main.hour_start');
@@ -216,12 +217,12 @@ for ($i = 0; $i <= 23; $i++) {
 }
 
 for ($i = 0; $i <= 59; $i++) {
-    $min = array(
+    $min = [
         'key' => $i,
         'title' => str_pad($i, 2, '0', STR_PAD_LEFT),
         'selected_start' => $i == $array['time_start_m'] ? ' selected="selected"' : '',
         'selected_end' => $i == $array['time_end_m'] ? ' selected="selected"' : '',
-    );
+    ];
 
     $xtpl->assign('MIN', $min);
     $xtpl->parse('main.min_start');

@@ -8,13 +8,14 @@
  * @Createdate Sun, 12 Jun 2016 05:02:54 GMT
  */
 
-if (!defined('NV_MAINFILE'))
+if (!defined('NV_MAINFILE')) {
     die('Stop!!!');
+}
 
 if (!nv_function_exists('nv_events_calendar')) {
     /**
      * nv_events_calendar()
-     * 
+     *
      * @param mixed $block_config
      * @return
      */
@@ -42,7 +43,7 @@ if (!nv_function_exists('nv_events_calendar')) {
         $xtpl->assign('LANG', $lang_module);
         $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
         $xtpl->assign('MODULE_FILE', $mod_file);
-        
+
         if ($module != $module_name) {
             if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/css/' . $mod_file . '.css')) {
                 $block_css = $global_config['module_theme'];
@@ -53,7 +54,7 @@ if (!nv_function_exists('nv_events_calendar')) {
             }
             $xtpl->assign('BLOCK_CSS', $block_css);
             $xtpl->parse('main.css');
-            
+
             if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/js/' . $mod_file . '.js')) {
                 $block_js = $global_config['module_theme'];
             } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/js/' . $mod_file . '.js')) {
@@ -64,7 +65,7 @@ if (!nv_function_exists('nv_events_calendar')) {
             $xtpl->assign('BLOCK_JS', $block_js);
             $xtpl->parse('main.js');
         }
-        
+
         $today = nv_date('d-m-Y', NV_CURRENTTIME);
         $xtpl->assign('LINK_CURRENT', NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=search/being-' . $today);
         $xtpl->assign('LINK_BEFORE', NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=search/before-' . $today);
@@ -93,18 +94,18 @@ if (!nv_function_exists('nv_events_calendar')) {
         $sql = 'SELECT id, title, time_start FROM ' . NV_PREFIXLANG . '_' . $mod_data . '_rows WHERE status = 1 AND time_start >=' . $time_start_month . ' AND time_start < ' . ($time_end_month + 86400);
         $list = $nv_Cache->db($sql, '', $module);
 
-        $array = array();
+        $array = [];
         foreach ($list as $row) {
             $array[date('j', $row['time_start'])][$row['id']] = $row['title'];
         }
 
         for ($i = $time_start_calendar, $j = 1; $i <= $time_end_calendar; $i += 86400) {
-            $day = array(
+            $day = [
                 'title' => date('d', $i),
                 'month_class' => date('n', $i) == $current_month ? 'current-month' : '',
                 'has_event' => empty($array[date('j', $i)]) ? '' : 'has-event',
                 'today' => date('d-m-Y', $i) == $today ? 'today' : ''
-            );
+            ];
 
             if (!empty($day['has_event'])) {
                 $day['title'] = '<a href="' . NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=search/' . nv_date('d-m-Y', $i) . '">' . $day['title'] . '</a>';

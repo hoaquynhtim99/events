@@ -6,37 +6,37 @@
 <link type="text/css" rel="stylesheet" href="{NV_BASE_SITEURL}themes/{BLOCK_CSS}/css/{MODULE_FILE}.css"/>
 <!-- END: css -->
 <div class="event-calendar mb20 clearfix" id="event-calendar">
-	<!-- BEGIN: data -->
-	<table>
-		<thead>
-			<tr>
-				<th><a href="#" class="load-ajax" data-url="{AJAX_URL}" data-post="{DATA_PREV}">&laquo;</a></th>
-				<th colspan="5">{GLANG.month} {MONTH_TEXT}</th>
-				<th><a href="#" class="load-ajax" data-url="{AJAX_URL}" data-post="{DATA_NEXT}">&raquo;</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="calendar-head">
-				<th>T2</th>
-				<th>T3</th>
-				<th>T4</th>
-				<th>T5</th>
-				<th>T6</th>
-				<th>T7</th>
-				<th>CN</th>
-			</tr>
-			<!-- BEGIN: week -->
-			<tr>
-				<!-- BEGIN: loop --><td class="{DAY.month_class} {DAY.today} {DAY.has_event}">{DAY.title}</td><!-- END: loop -->
-			</tr>
-			<!-- END: week -->
-		</tbody>
-	</table>
-	<!-- END: data -->
+    <!-- BEGIN: data -->
+    <table>
+        <thead>
+            <tr>
+                <th><a href="#" class="load-ajax" data-url="{AJAX_URL}" data-post="{DATA_PREV}">&laquo;</a></th>
+                <th colspan="5">{GLANG.month} {MONTH_TEXT}</th>
+                <th><a href="#" class="load-ajax" data-url="{AJAX_URL}" data-post="{DATA_NEXT}">&raquo;</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="calendar-head">
+                <th>T2</th>
+                <th>T3</th>
+                <th>T4</th>
+                <th>T5</th>
+                <th>T6</th>
+                <th>T7</th>
+                <th>CN</th>
+            </tr>
+            <!-- BEGIN: week -->
+            <tr>
+                <!-- BEGIN: loop --><td class="{DAY.month_class} {DAY.today} {DAY.has_event}">{DAY.title}</td><!-- END: loop -->
+            </tr>
+            <!-- END: week -->
+        </tbody>
+    </table>
+    <!-- END: data -->
 </div>
 <div class="mb20 clearfix">
-	<a class="btn btn-sm btn-info btn-block mb10" href="{LINK_AFTER}">{LANG.event_future}</a>
-	<a class="btn btn-sm btn-success btn-block mb10" href="{LINK_CURRENT}">{LANG.event_now}</a>
-	<a class="btn btn-sm btn-danger btn-block mb10" href="{LINK_BEFORE}">{LANG.event_history}</a>
+    <a class="btn btn-sm btn-info btn-block mb10" href="{LINK_AFTER}">{LANG.event_future}</a>
+    <a class="btn btn-sm btn-success btn-block mb10" href="{LINK_CURRENT}">{LANG.event_now}</a>
+    <a class="btn btn-sm btn-danger btn-block mb10" href="{LINK_BEFORE}">{LANG.event_history}</a>
 </div>
 <!-- END: main -->
