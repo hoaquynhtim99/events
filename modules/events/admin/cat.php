@@ -97,8 +97,6 @@ if ($nv_Request->isset_request('delete', 'post')) {
             $db->query($sql);
         }
 
-        $db->query('UPDATE ' . NV_PREFIXLANG . '_' . $module_data . '_rows SET catid = 0 WHERE catid =' . $catid);
-
         $nv_Cache->delMod($module_name);
     } else {
         die('NO_' . $catid);
